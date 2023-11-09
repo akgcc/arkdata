@@ -22,13 +22,13 @@ for v in vars.values():
     except:
         pass
 
-result = set(p if p.split('/')[1:2][0] == 'music' else '/'.join(p.split('/')[:2]) for p in usedFiles)
+result = set(p if p.split('/')[1] == 'music' else '/'.join(p.split('/')[:2]) for p in usedFiles)
 # from pprint import pprint
 # for entry in result:
     # print(f'"audio/{entry}",')
 with open('config.toml', 'r') as file:
     data = toml.load(file)
-data['path_whitelist'] += [f'audio/{r}' for r in list(result)[:1]]
+data['path_whitelist'] += [f'audio/{r}' for r in result]
 data['path_whitelist'] = list(set(data['path_whitelist']))
 with open('config.toml', 'w') as file:
     toml.dump(data, file)
