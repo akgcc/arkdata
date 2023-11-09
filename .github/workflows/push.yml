@@ -27,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Install local kawapack
-        run: pip install kawapackchars/
+        run: pip install ./kawapackchars/
         
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
