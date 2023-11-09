@@ -12,6 +12,7 @@ repository = "https://github.com/astral4/arkdata"
 python = "^3.12"
 pydub = "^0.25.0"
 toml = "^0.10.2"
+requests = "^2.31.0"
 
 [build-system]
 requires = ["poetry-core"]
