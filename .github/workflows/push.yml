@@ -26,8 +26,8 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
         
-      - name: Install local kawapack
-        run: pip install "${{ github.workspace }}/kawapackchars"
+      - name: Install modified kawapack
+        run: pip install git+https://github.com/akgcc/kawapack
         
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
