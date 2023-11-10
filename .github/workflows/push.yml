@@ -7,6 +7,7 @@ on:
 
 jobs:
   check:
+    runs-on: ubuntu-22.04
     outputs:
       status: ${{ steps.early.outputs.status }}
     steps:
@@ -15,9 +16,9 @@ jobs:
         run: |
           python cmp_version.py
           if [ -f "NO_UPDATE_NEEDED" ]; then
-            echo "status=success" >> $GITHUB_OUTPUT
-          else
             echo "status=failure" >> $GITHUB_OUTPUT
+          else
+            echo "status=success" >> $GITHUB_OUTPUT
           fi
   main:
     runs-on: ubuntu-22.04
