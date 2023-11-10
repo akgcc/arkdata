@@ -26,7 +26,7 @@ jobs:
       - name: Check for new data version
         run: |
             python cmp_version.py
-            if [ "${{ env.NO_UPDATE_NEEDED }}" == "true" ]; then
+            if [ -f "NO_UPDATE_NEEDED" ]; then
                 echo "data is up to date."
                 exit 0
             fi
