@@ -6,8 +6,23 @@ on:
     - cron: "0 0,8,16 * * *"
 
 jobs:
+  check:
+    outputs:
+      status: ${{ steps.early.outputs.status }}
+    steps:
+      - id: early
+        name: Early exit
+        run: |
+          python cmp_version.py
+          if [ -f "NO_UPDATE_NEEDED" ]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+          fi
   main:
     runs-on: ubuntu-22.04
+    needs: check
+    if: needs.check.outputs.status == 'success'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,14 +37,6 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
-
-      - name: Check for new data version
-        run: |
-            python cmp_version.py
-            if [ -f "NO_UPDATE_NEEDED" ]; then
-                echo "data is up to date."
-                exit 0
-            fi
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
