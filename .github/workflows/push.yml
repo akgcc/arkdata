@@ -3,7 +3,7 @@ name: Update assets
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0"
+    - cron: "0 0,8,16 * * *"
 
 jobs:
   main:
@@ -22,6 +22,13 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
+
+      - name: Check for new data version
+        run: |
+            python cmp_version.py
+            if [ $? -eq 1 ]; then
+                exit 0
+            fi
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
