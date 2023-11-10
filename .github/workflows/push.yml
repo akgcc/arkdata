@@ -24,9 +24,12 @@ jobs:
           cache: "pip"
 
       - name: Check for new data version
+        run: python cmp_version.py
+
+      - name: Exit if no update available
         run: |
-            python cmp_version.py
-            if [ $? -eq 1 ]; then
+            if [ "${{ env.NO_UPDATE_NEEDED }}" == "true" ]; then
+                echo "data is up to date."
                 exit 0
             fi
 
