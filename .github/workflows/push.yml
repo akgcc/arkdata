@@ -27,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Install audio dependencies
-        run: apt-get update && apt-get install -y libav-tools libavcodec-extra libogg-dev libvorbis-dev
+        run: sudo apt-get update && sudo apt-get install -y libav-tools libavcodec-extra libogg-dev libvorbis-dev
         
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
