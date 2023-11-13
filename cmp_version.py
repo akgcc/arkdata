@@ -4,7 +4,7 @@ from pathlib import Path
 
 url = "https://ak-conf.hypergryph.com/config/prod/official/Android/version"
 server = 'CN'
-versionCache = Path('./cache/versions.json')
+versionCache = Path('./versions.json')
 
 # Make the GET request
 response = request.urlopen(url)

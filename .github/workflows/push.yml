@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: export needed files
         run: |
-            svn export --force https://github.com/akgcc/arkdata/trunk/cmp_version.py
-            svn export --force https://github.com/akgcc/arkdata/trunk/cache
+            curl https://raw.githubusercontent.com/akgcc/arkdata/main/cmp_version.py > cmp_version.py
+            curl https://raw.githubusercontent.com/akgcc/arkdata/main/cache/versions.json > versions.json
       - id: early
         name: Early exit
         run: |
