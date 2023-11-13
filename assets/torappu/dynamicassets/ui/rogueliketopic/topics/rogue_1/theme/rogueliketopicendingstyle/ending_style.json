@@ -1,0 +1,38 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 7908948849135100349
+    },
+    "m_Name": "ending_style",
+    "_addBPViewPrefab": {
+        "m_FileID": 0,
+        "m_PathID": -4208250911049298225
+    },
+    "_overviewPrefab": {
+        "m_FileID": 0,
+        "m_PathID": -6540828958546457774
+    },
+    "_bpColor": {
+        "r": 1.0,
+        "g": 0.7098039388656616,
+        "b": 0.14509804546833038,
+        "a": 1.0
+    },
+    "_endingAtlas": {
+        "m_FileID": 1,
+        "m_PathID": -7091450865268332556
+    },
+    "_imageRelicUnlockName": "lock",
+    "_imageMonthTaskName": "delegation",
+    "_relicNameColor": {
+        "r": 0.5137255191802979,
+        "g": 0.40392157435417175,
+        "b": 0.1882352977991104,
+        "a": 1.0
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -3446318153963376458
+    },
+    "m_Name": "challenge_mode_style",
+    "_bkgRewardColor": {
+        "r": 0.1921568661928177,
+        "g": 0.1921568661928177,
+        "b": 0.1921568661928177,
+        "a": 1.0
+    },
+    "_challengeModeAtlas": {
+        "m_FileID": 1,
+        "m_PathID": 3137689454592237537
+    },
+    "_bkgName": "bk",
+    "_exploringDecoName": "lamp_exploring",
+    "_challengePrefixName": "challenge_name_prefix",
+    "_colorTargetCurProgressTxt": {
+        "r": 1.0,
+        "g": 0.7098039388656616,
+        "b": 0.14509804546833038,
+        "a": 1.0
+    },
+    "_colorTaskTheme": {
+        "r": 1.0,
+        "g": 0.7098039388656616,
+        "b": 0.14509804546833038,
+        "a": 1.0
+    },
+    "_colorTaskTitle": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 1.0
+    },
+    "_logoPrefab": {
+        "m_FileID": 0,
+        "m_PathID": 5516283163566228637
+    },
+    "_completeProgressPrefab": {
+        "m_FileID": 0,
+        "m_PathID": -1499249075393546798
+    },
+    "_cardPrefab": {
+        "m_FileID": 0,
+        "m_PathID": 7168137418437146859
+    },
+    "_sizeOfBkg": {
+        "x": 1094.0,
+        "y": 641.0
+    }
+}

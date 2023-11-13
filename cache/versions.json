@@ -6,9 +6,5 @@
   "US": {
     "resource": "",
     "client": ""
-  },
-  "CN": {
-    "resource": "",
-    "client": "2.1.21"
   }
 }

@@ -1,0 +1,34 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -8668124941459547766
+    },
+    "m_Name": "roguelike_topic_theme",
+    "_styles": [
+        {
+            "m_FileID": 0,
+            "m_PathID": -8562925992469594092
+        },
+        {
+            "m_FileID": 0,
+            "m_PathID": 7751337866405032295
+        },
+        {
+            "m_FileID": 0,
+            "m_PathID": 6618929257625088744
+        },
+        {
+            "m_FileID": 0,
+            "m_PathID": 8956499953684028120
+        },
+        {
+            "m_FileID": 0,
+            "m_PathID": 8390413280277218579
+        }
+    ]
+}

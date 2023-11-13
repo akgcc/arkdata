@@ -1,0 +1,24 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -3869976979397620510
+    },
+    "m_Name": "normal_mode_style",
+    "_easyDiffRelicIcon": {
+        "m_FileID": 1,
+        "m_PathID": 2260651605856686314
+    },
+    "_normalDiffRelicIcon": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "_hardDiffRelicIcon": {
+        "m_FileID": 1,
+        "m_PathID": 3332961670947830521
+    }
+}

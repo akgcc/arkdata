@@ -1,0 +1,76 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 7569326609073019784
+    },
+    "m_Name": "battle_pass_style",
+    "_topicColor": {
+        "r": 1.0,
+        "g": 0.7098039388656616,
+        "b": 0.14509804546833038,
+        "a": 1.0
+    },
+    "_validNoticColor": {
+        "r": 1.0,
+        "g": 0.7098039388656616,
+        "b": 0.14509804546833038,
+        "a": 1.0
+    },
+    "_validLineColor": {
+        "r": 0.49803921580314636,
+        "g": 0.3803921639919281,
+        "b": 0.14901961386203766,
+        "a": 1.0
+    },
+    "_normalPrizeColor": {
+        "r": 0.27843138575553894,
+        "g": 0.27843138575553894,
+        "b": 0.27843138575553894,
+        "a": 1.0
+    },
+    "_greatPrizeColor": {
+        "r": 0.7764706015586853,
+        "g": 0.7764706015586853,
+        "b": 0.7764706015586853,
+        "a": 1.0
+    },
+    "_dateColor": {
+        "r": 0.729411780834198,
+        "g": 0.7215686440467834,
+        "b": 0.7215686440467834,
+        "a": 1.0
+    },
+    "_dateDecColor": {
+        "r": 0.46666666865348816,
+        "g": 0.46666666865348816,
+        "b": 0.46666666865348816,
+        "a": 1.0
+    },
+    "_battlePassAtlas": {
+        "m_FileID": 2,
+        "m_PathID": -8402229076075967026
+    },
+    "_validSpriteName": "img_valid",
+    "_getAllBtnSpriteName": "btn_get_all",
+    "_bkgSpriteName": "img_bkg",
+    "_btnDetailSpriteName": "btn_detail",
+    "_btnPurchaseSpriteName": "btn_purchase",
+    "_iconMonthModeName": "icon_month_mode",
+    "_withoutLimitItemAlpha": 0.4000000059604645,
+    "_gotItemAlpha": 0.20000000298023224,
+    "_normalItemAlpha": 1.0,
+    "_iconSprite": "img_icon",
+    "_maxSpriteName": "img_max",
+    "_rightIconSpriteName": "buy_target",
+    "_prizeItemLightColor": {
+        "r": 0.2666666805744171,
+        "g": 0.18431372940540314,
+        "b": 0.03529411926865578,
+        "a": 1.0
+    }
+}

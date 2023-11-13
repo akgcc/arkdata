@@ -1,0 +1,45 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 5461515488609553696
+    },
+    "m_Name": "game_end_bg",
+    "_rootPackingTag": "UI_ROGUE_1_END_BKG",
+    "_cntPerAtlas": -1,
+    "_standardPicSize": {
+        "width": 510,
+        "height": 314
+    },
+    "_extraPicSize": [],
+    "_compressType": 3,
+    "_atlasSize": 1,
+    "_meshType": 0,
+    "_useCntPerAtlas": 0,
+    "_maxFileSize": 1048576,
+    "_maxTextureSize": 0,
+    "_extraTagRegex": "",
+    "_extractTagConfig": {
+        "rules": []
+    },
+    "_atlasOutputPath": "",
+    "_configName": "",
+    "_keys": [
+        "ro_ending_1",
+        "ro_ending_2",
+        "ro_ending_3",
+        "ro_ending_4",
+        "ro_ending_fail"
+    ],
+    "_values": [
+        "UI/RoguelikeTopic/Topics/rogue_1/Ending/GameEndBg/ro_ending_1",
+        "UI/RoguelikeTopic/Topics/rogue_1/Ending/GameEndBg/ro_ending_2",
+        "UI/RoguelikeTopic/Topics/rogue_1/Ending/GameEndBg/ro_ending_3",
+        "UI/RoguelikeTopic/Topics/rogue_1/Ending/GameEndBg/ro_ending_4",
+        "UI/RoguelikeTopic/Topics/rogue_1/Ending/GameEndBg/ro_ending_fail"
+    ]
+}

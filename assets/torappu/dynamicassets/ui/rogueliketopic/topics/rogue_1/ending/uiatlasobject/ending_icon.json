@@ -1,0 +1,117 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -4420957637576057513
+    },
+    "m_Name": "ending_icon",
+    "_sprites": [
+        {
+            "name": "rogue_1_complete_icon_3",
+            "guid": "5c3d21c2bbcddbd47b53a7563debf12f",
+            "atlas": 0,
+            "rect": {
+                "x": 0,
+                "y": 0,
+                "w": 29,
+                "h": 34
+            },
+            "rotate": 0
+        },
+        {
+            "name": "rogue_1_complete_icon_4",
+            "guid": "f7fe1e9e12d4f1940a3bf903d13af301",
+            "atlas": 0,
+            "rect": {
+                "x": 31,
+                "y": 0,
+                "w": 29,
+                "h": 34
+            },
+            "rotate": 0
+        },
+        {
+            "name": "rogue_1_complete_icon_1",
+            "guid": "e62a33074eb02734b883ae3cddf21104",
+            "atlas": 0,
+            "rect": {
+                "x": 0,
+                "y": 36,
+                "w": 29,
+                "h": 34
+            },
+            "rotate": 0
+        },
+        {
+            "name": "rogue_1_complete_icon_2",
+            "guid": "69087f465f2e42342a2d7c4eb0b66909",
+            "atlas": 0,
+            "rect": {
+                "x": 31,
+                "y": 36,
+                "w": 29,
+                "h": 34
+            },
+            "rotate": 0
+        }
+    ],
+    "_atlases": [
+        {
+            "index": 0,
+            "texture": {
+                "m_FileID": 0,
+                "m_PathID": -693944656360087163
+            },
+            "alpha": {
+                "m_FileID": 0,
+                "m_PathID": 8984732720219309002
+            },
+            "size": 128
+        }
+    ],
+    "_workDir": "",
+    "_alphaSplit": 1,
+    "_maxSize": 2,
+    "_sign": {
+        "m_sprites": [
+            {
+                "name": "rogue_1_complete_icon_3",
+                "guid": "5c3d21c2bbcddbd47b53a7563debf12f",
+                "md5": "dd6b0472be6679d0a95109341026d925"
+            },
+            {
+                "name": "rogue_1_complete_icon_4",
+                "guid": "f7fe1e9e12d4f1940a3bf903d13af301",
+                "md5": "9a8de06a31a321df7497bc6631d954d1"
+            },
+            {
+                "name": "rogue_1_complete_icon_1",
+                "guid": "e62a33074eb02734b883ae3cddf21104",
+                "md5": "43c5fcf36d427c3c60a0553afc4f461d"
+            },
+            {
+                "name": "rogue_1_complete_icon_2",
+                "guid": "69087f465f2e42342a2d7c4eb0b66909",
+                "md5": "8d592f746116fc66effaa3a2ab6f34ef"
+            }
+        ],
+        "m_atlases": [
+            {
+                "name": "ending_icon#0",
+                "guid": "c0868c0847d96194b8c03ffc8089e744",
+                "md5": "faa10d5978204f39f7a094dc5ba7e9c6"
+            }
+        ],
+        "m_alphas": [
+            {
+                "name": "ending_icon#0a",
+                "guid": "f3a07b37a6f4ab245a9e733ddcde1407",
+                "md5": "f5c582bb04cc988b38c25c02e44beb6e"
+            }
+        ]
+    }
+}

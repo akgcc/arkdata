@@ -1,0 +1,43 @@
+{
+    "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+    },
+    "m_Enabled": 1,
+    "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": 5461515488609553696
+    },
+    "m_Name": "init_choice",
+    "_rootPackingTag": "UI_ROGUELIKE_CHOICE_ICON",
+    "_cntPerAtlas": -1,
+    "_standardPicSize": {
+        "width": 180,
+        "height": 180
+    },
+    "_extraPicSize": [],
+    "_compressType": 0,
+    "_atlasSize": 1,
+    "_meshType": 0,
+    "_useCntPerAtlas": 0,
+    "_maxFileSize": 1048576,
+    "_maxTextureSize": 0,
+    "_extraTagRegex": "",
+    "_extractTagConfig": {
+        "rules": []
+    },
+    "_atlasOutputPath": "",
+    "_configName": "",
+    "_keys": [
+        "initial_reward_gold",
+        "initial_reward_hp",
+        "initial_reward_population",
+        "initial_reward_unknown"
+    ],
+    "_values": [
+        "UI/RoguelikeTopic/Topics/rogue_1/Init/InitChoicePic/initial_reward_gold",
+        "UI/RoguelikeTopic/Topics/rogue_1/Init/InitChoicePic/initial_reward_hp",
+        "UI/RoguelikeTopic/Topics/rogue_1/Init/InitChoicePic/initial_reward_population",
+        "UI/RoguelikeTopic/Topics/rogue_1/Init/InitChoicePic/initial_reward_unknown"
+    ]
+}
