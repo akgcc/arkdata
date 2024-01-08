@@ -15,3 +15,10 @@ __pycache__/
 
 # Unneeded
 **/SpriteAtlasTexture-*.png
+
+*.url
+*.txt
+cache/cleanup.py
+*.dll
+*.bat
+*.json
