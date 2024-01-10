@@ -16,8 +16,14 @@ output_dir = "assets"
 
 # Optional; an asset will only be processed if its path contains one of the paths in this list
 path_whitelist = [
-    "arts/building/buffs/buff_icon_hub.ab",       # Facility icons
-    "spritepack/building_ui_buff_skills_h1_0.ab", # Base skill icons
-    "spritepack/ui_char_avatar_",                 # Operator avatars
-    "spritepack/ui_item_icons_h1_0.ab",           # Item icons
+    "avg/characters/",
+    "avg/bg/",
+    "spritepack/ui_roguelike_topic_item",
+    "spritepack/ui_equip_big_img",
+    "avg/items/",
+    "spritepack/ui_char_avatar",
+    "avg/imgs/",
+    "spritepack/skill_icons",
+    "spritepack/ui_item_icons",
+    "ui/rglktopic/rogue_1.ab",
 ]
