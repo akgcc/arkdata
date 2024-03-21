@@ -49,6 +49,15 @@ jobs:
       - name: Install audio dependencies
         run: sudo apt-get update && sudo apt-get install -y ffmpeg libogg-dev libvorbis-dev
         
+      - name: Get FBS definitions
+        run: git clone https://github.com/MooncellWiki/OpenArknightsFBS.git
+        
+      - name: Get flatbuffers
+        run: git clone https://github.com/google/flatbuffers.git
+      
+      - name: Build flatc
+        run: cd ./flatbuffers/CMake && cmake .. && make install
+
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
         
