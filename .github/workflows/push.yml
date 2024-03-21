@@ -56,7 +56,7 @@ jobs:
         run: git clone https://github.com/google/flatbuffers.git
       
       - name: Build flatc
-        run: cd ./flatbuffers/CMake && cmake .. && make install
+        run: cd ./flatbuffers/CMake && cmake -G "Unix Makefiles" .. && make install DESTDIR=../../
 
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
