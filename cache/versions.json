@@ -1,9 +1,9 @@
 {
-  "US": {
-    "resource": "",
-    "client": ""
-  },
   "CN": {
+    "resource": "24-05-01-15-39-54-90349b",
+    "client": "2.2.61"
+  },
+  "US": {
     "resource": "",
     "client": ""
   }
