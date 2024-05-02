@@ -26,4 +26,5 @@ path_whitelist = [
     "spritepack/skill_icons",
     "spritepack/ui_item_icons",
     "ui/rglktopic/rogue_1.ab",
+    "raw/video/"
 ]
