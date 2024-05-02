@@ -146,6 +146,7 @@ async fn download_asset(name: Arc<str>, client: Client) -> Result<JoinHandle<()>
                         data,
                         file.mangled_name().parent().unwrap().to_path_buf(),
                         &CONFIG.output_dir,
+                        file.mangled_name().file_name().unwrap().to_os_string(),
                     ))
                     .unwrap();
             });
