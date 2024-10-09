@@ -17,24 +17,24 @@ output_dir = "assets"
 # Optional; an asset will only be processed if its path contains one of the paths in this list
 path_whitelist = [
     "avg/characters/", # story character sprites
-#    "avg/bg/", # story background images
-#    "spritepack/ui_roguelike_topic_item", # relic icons
- #   "spritepack/ui_equip_big_img", # module arts
- #   "avg/items/", # story item arts
- #   "spritepack/ui_char_avatar", # op faces
+    "avg/bg/", # story background images
+    "spritepack/ui_roguelike_topic_item", # relic icons
+    "spritepack/ui_equip_big_img", # module arts
+    "avg/items/", # story item arts
+    "spritepack/ui_char_avatar", # op faces
     "avg/imgs/", # story images
- #   "spritepack/skill_icons", # op skill icon art
- #   "spritepack/ui_item_icons", # misc item art ??
- #   "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
- #   "raw/video/", # embeded videos (amiya xform, chapter intros, etc.)
+    "spritepack/skill_icons", # op skill icon art
+    "spritepack/ui_item_icons", # misc item art ??
+    "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
+    "raw/video/", # embeded videos (amiya xform, chapter intros, etc.)
 # above comments are all guesses, below should be fully accurate:
- #   "spritepack/ui_sub_profession_icon_hub", # subclass icons
- #   "arts/friend_assist_profession_hub", # transparent class icons
- #   "arts/profession", # various class icons
+    "spritepack/ui_sub_profession_icon_hub", # subclass icons
+    "arts/friend_assist_profession_hub", # transparent class icons
+    "arts/profession", # various class icons
     "chararts/", # avatars (main char art)
- #   "spritepack/building_ui_buff_skills", # riic skill icons
-#    "arts/elite_hub", # various elite arts
-#    "spritepack/ui_equip_type_hub", # module icons (no text)
- #   "spritepack/ui_uniequip_color_shining_hub", # module highlight colors
-#    "arts/potential_hub", # potentials
+    "spritepack/building_ui_buff_skills", # riic skill icons
+    "arts/elite_hub", # various elite arts
+    "spritepack/ui_equip_type_hub", # module icons (no text)
+    "spritepack/ui_uniequip_color_shining_hub", # module highlight colors
+    "arts/potential_hub", # potentials
 ]
