@@ -29,6 +29,13 @@ jobs:
     needs: check
     if: needs.check.outputs.status == 'success'
     steps:
+      - name: Check for lock file
+        run: |
+          if [ -f ".github/LOCK_FAIL" ]; then
+            echo "Previous run failed, skipping this run."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v3
         
@@ -61,8 +68,8 @@ jobs:
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
         
-#      - name: Update config with sounds
-#        run: python append_sounds.py
+      - name: Update config with sounds
+        run: python append_sounds.py
         
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
@@ -84,3 +91,14 @@ jobs:
           git add cache
           git add assets
           git diff-index --quiet HEAD || git commit -m "Update data" && git push
+  
+      - name: Update lock file on failure
+        if: failure()
+        run: |
+          # Create the lock file if the task failed
+          git config --global user.name "Kawabot"
+          git config --global user.email "actions@users.noreply.github.com"
+          git pull --all
+          echo "Task failed" > .github/LOCK_FAIL
+          git add .github/LOCK_FAIL
+          git diff-index --quiet HEAD || git commit -m "Update failed, create lock file" && git push
