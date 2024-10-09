@@ -59,17 +59,17 @@ jobs:
       - name: Get FBS definitions
         run: git clone https://github.com/MooncellWiki/OpenArknightsFBS.git
         
-      - name: Get flatbuffers
-        run: git clone https://github.com/google/flatbuffers.git
+ #     - name: Get flatbuffers
+#        run: git clone https://github.com/google/flatbuffers.git
       
-      - name: Build flatc
-        run: cd ./flatbuffers/CMake && cmake -G "Unix Makefiles" .. && make install DESTDIR=../../
+#      - name: Build flatc
+#        run: cd ./flatbuffers/CMake && cmake -G "Unix Makefiles" .. && make install DESTDIR=../../
 
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
         
-      - name: Update config with sounds
-        run: python append_sounds.py
+#      - name: Update config with sounds
+#        run: python append_sounds.py
         
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
@@ -81,6 +81,8 @@ jobs:
         run: cargo build --release
 
       - name: Run app
+        env:
+          PYTHONUNBUFFERED: 1  # Ensure Python output is flushed
         run: ./target/release/arkdata
 
       - name: Commit updates
