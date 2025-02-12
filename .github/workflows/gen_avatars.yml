@@ -1,0 +1,56 @@
+name: Run Python Script on Commit
+
+on:
+  push:
+    branches:
+      - main  # Change this to your branch if needed
+  pull_request:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'  # Change if needed
+          
+      - name: Cache Python Packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-manual
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            
+      - name: Install Dependencies
+        run: |
+          pip install torch==1.12.1
+          pip install torchvision==0.13.1
+          pip install imagesize==1.4.1
+          pip install numpy==1.23.3
+          pip install openmim==0.3.2
+          python -m mim install mmcv-full==1.6.2
+          python -m mim install mmdet==2.25.2
+          pip install wheel
+          python -m mim install mmpose==0.28.1
+          pip install anime-face-detector==0.0.9
+          pip freeze
+          
+      - name: Clone ArknightsGameData
+        run: |
+          git clone https://github.com/Kengxxiao/ArknightsGameData.git ./ArknightsGameData
+          
+      - name: Run Python Script
+        run: python crop_avatars.py  # Change this to your script filename
+        
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'update avatars'
+          add: '["*.json", "thumbs"]'
