@@ -24,13 +24,13 @@ OVERWRITE_MANUAL_THUMBS = False # if true will overwrite all thumbs defined in m
 #
 # I THINK this was fixed already but do a check to make sure if you do regen thumbs
 ##########################################
-coordsFile = Path(r'.\cropper_data\auto_coords.json')
-outputCoords = Path(r'.\cropper_data\avatar_coords.json')
-failedCoords = Path(r'.\cropper_data\failed_coords.json')
-manCoords = Path(r'.\cropper_data\manual_coords.json')
-outputDir = Path(r'.\thumbs')
-storyDir = Path(r'.\ArknightsGameData\zh_CN\gamedata\story')
-avgDir = Path(r'.\assets\avg\characters')
+coordsFile = Path('./cropper_data/auto_coords.json')
+outputCoords = Path('./cropper_data/avatar_coords.json')
+failedCoords = Path('./cropper_data/failed_coords.json')
+manCoords = Path('./cropper_data/manual_coords.json')
+outputDir = Path('./thumbs')
+storyDir = Path('./ArknightsGameData/zh_CN/gamedata/story')
+avgDir = Path('./assets/avg/characters')
 # aceshipDir = Path(r'.\characters_aceship')
 
 # see bucket_by_substring, these exceptions are for avatars where the same pose has in actuality a different pose, making the face not line up with other faces in the same "pose group", see char_115_headbr_9 for an example.
