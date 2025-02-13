@@ -8,11 +8,15 @@ on:
       - 'cropper_data/manual_coords.json'
     branches:
       - main  # Change this to your branch if needed
+  workflow_run:
+    workflows: ["gamedata_trigger"]
+    types: [completed]
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
-
+    if: |
+      ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4

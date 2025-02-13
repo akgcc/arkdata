@@ -1,0 +1,14 @@
+name: gamedata_trigger
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for updates
+        run: |
+          exit $(curl -s https://api.github.com/repos/Kengxxiao/ArknightsGameData/commits?per_page=1 | jq -r "((now - (.[0].commit.author.date | fromdateiso8601)) / (60*60*24) | trunc)")
