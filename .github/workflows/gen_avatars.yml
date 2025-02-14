@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'assets/'
+      - 'assets/**'
       - 'cropper_data/manual_coords.json'
     branches:
       - main  # Change this to your branch if needed
