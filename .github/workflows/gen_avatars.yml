@@ -7,10 +7,7 @@ on:
       - 'assets/**'
       - 'cropper_data/manual_coords.json'
     branches:
-      - main  # Change this to your branch if needed
-  workflow_run:
-    workflows: ["gamedata_trigger"]
-    types: [completed]
+      - main
 
 jobs:
   run-script:
@@ -23,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # Change if needed
+          python-version: '3.9'
           
       - name: Cache Python Packages
         uses: actions/cache@v4
@@ -52,7 +49,7 @@ jobs:
           git clone https://github.com/Kengxxiao/ArknightsGameData.git ./ArknightsGameData
           
       - name: Run Python Script
-        run: python crop_avatars.py  # Change this to your script filename
+        run: python crop_avatars.py
         
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
