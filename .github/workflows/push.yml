@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Check for lock file
         run: |
-          if [ -f ".github/LOCK_FAIL" ]; then
+          if curl --silent --fail https://raw.githubusercontent.com/akgcc/arkdata/main/.github/LOCK_FAIL; then
             echo "Previous run failed, skipping this run."
             exit 1
           fi
