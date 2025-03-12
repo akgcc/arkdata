@@ -16,14 +16,6 @@ re_chars = re.compile(b'name\d*\s*=\s*"?((?<=")[^"]*)',re.I)
 OVERWRITE_ALL_THUMBS = False # if true will replace all thumbs IMAGES (will not redo finding the coords of thumbs), you probably NEVER want to do this, and instead want to use OVERWRITE_MANUAL_THUMBS
 OVERWRITE_MANUAL_THUMBS = False # if true will overwrite all thumbs defined in manual_coords.json, you must do this if you edit existing coords.
 
-##########################################
-# there is a pretty serious issue atm:
-# the new data source uses exported images which have different sizes than aceship (which are normalized to 1024)
-# this means your existing manual_coords.json is no longer accurate.
-# if you ever regenerate thumbs based on it they will all be wrong.
-#
-# I THINK this was fixed already but do a check to make sure if you do regen thumbs
-##########################################
 coordsFile = Path('./cropper_data/auto_coords.json')
 outputCoords = Path('./cropper_data/avatar_coords.json')
 failedCoords = Path('./cropper_data/failed_coords.json')
@@ -93,7 +85,11 @@ def normalize_buckets(buckets, coords, failures):
     # sets all coords in a bucket to the median of that bucket.
     # this ensures faces will line up
     for _,v in buckets.items():
-        med = calculate_median_coordinate([coords[x] for x in v if x not in failures.keys()])
+        valid_coords = [coords[x] for x in v if x not in failures.keys()]
+        if len(valid_coords) == 0:
+            # no valid coords in this bucket, skip it
+            continue
+        med = calculate_median_coordinate(valid_coords)
         for key in v:
             coords[key] = med
             if key in failures:
@@ -217,19 +213,14 @@ def crop_image(image, coords):
     return cropped_image
 with open(coordsFile,'r') as f:
     avatar_coords = json.load(f)
-
-failed_coords = {}
-manual_coords = {}
+with open(failedCoords,'r') as f:
+    failed_coords = json.load(f)
 with open(manCoords,'r') as f:
     manual_coords = json.load(f)
 manual_coords = {k: v for k, v in manual_coords.items() if v}
-manual_coords_buckets = {}
 for k, v in manual_coords.items():
-    id,face,pose = SPLIT_REGEX.match(k).groups()
-    if id not in manual_coords_buckets:
-        manual_coords_buckets[id] = v
-# print('valid coords user set:',manual_coords)
-# exit()
+    failed_coords.pop(k,None)
+manual_coords_buckets = bucket_by_substring(manual_coords,failed_coords)
 for name,path in all_chars:
     # print(get_coords(avgDir / 'avg_npc_034_14.png',True))
     # print(name,get_coords(path,True))
@@ -239,6 +230,7 @@ for name,path in all_chars:
         bbox = get_coords(path)
         if bbox:
             avatar_coords[name] = bbox
+            failed_coords.pop(name,None)
         else:
             failed_coords[name] = str(path)
     
@@ -260,7 +252,12 @@ for name,path in all_chars:
             img = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
             # use coords given in manual_coords FIRST in case some auto coords needed to be modified.
             cropped_image = crop_image(img, manual_coords.get(name) or avatar_coords[name])
-            cv2.imwrite(str(outpath).lower(), cropped_image)
+            if cropped_image is None or cropped_image.size == 0 or min(cropped_image.shape[:2]) == 0:
+                # coords failed, mark as such and skip:
+                failed_coords[name] = str(path)
+                avatar_coords.pop(name,None)
+            else:
+                cv2.imwrite(str(outpath).lower(), cropped_image)
 
     
 with open(failedCoords,'w') as f:
