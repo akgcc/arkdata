@@ -32,6 +32,7 @@ POSE_EXCEPTIONS = {
 'avg_npc_143': [['2']],
 'avg_npc_192_1': [['8']],
 'char_012_misa_1': [['5']],
+'avg_4142_laios_1': [['4']],
 }
 
 SPLIT_REGEX = re.compile(r'^(.*?)(?:#(\d+))?(?:\$(\d+))?$')
