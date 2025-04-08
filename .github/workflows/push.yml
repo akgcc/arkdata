@@ -72,6 +72,9 @@ jobs:
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
         
+      - name: Install modified UnityPy
+        run: pip install git+https://github.com/K0lb3/UnityPy
+        
       - name: Update config with sounds
         run: python append_sounds.py
         
