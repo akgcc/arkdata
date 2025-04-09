@@ -108,6 +108,7 @@ async fn download_asset(name: Arc<str>, client: Client) -> Result<JoinHandle<()>
             .replace(".mp4", "")
             .replace('/', "_")
             .replace('#', "__")
+            .replace(".usm", "")
     );
 
     let response = RETRY_POLICY
