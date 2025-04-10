@@ -16,7 +16,7 @@ output_dir = "assets"
 
 # Optional; an asset will only be processed if its path contains one of the paths in this list
 path_whitelist = [
-    "avg/characters/", # story character sprites
+    # "avg/characters/", # story character sprites
     "avg/bg/", # story background images
     # "spritepack/ui_roguelike_topic_item", # relic icons
     # "spritepack/ui_equip_big_img", # module arts
