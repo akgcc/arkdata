@@ -23,9 +23,9 @@ path_whitelist = [
     "avg/items/", # story item arts
     "spritepack/ui_char_avatar", # op faces
     "avg/imgs/", # story images
-    # "spritepack/skill_icons", # op skill icon art
-    # "spritepack/ui_item_icons", # misc item art ??
-    # "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
+    "spritepack/skill_icons", # op skill icon art
+    "spritepack/ui_item_icons", # misc item art ??
+    "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
     # "raw/video/", # embeded videos (amiya xform, chapter intros, etc.)
 # above comments are all guesses, below should be fully accurate:
     # "spritepack/ui_sub_profession_icon_hub", # subclass icons
