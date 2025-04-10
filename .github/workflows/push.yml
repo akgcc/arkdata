@@ -74,9 +74,9 @@ jobs:
 
       - name: Install modified kawapack
         run: pip install git+https://github.com/akgcc/kawapack
-#     sounds broken in v2.5
-#      - name: Update config with sounds
-#        run: python append_sounds.py
+
+      - name: Update config with sounds
+        run: python append_sounds.py
         
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
