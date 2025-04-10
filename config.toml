@@ -17,12 +17,12 @@ output_dir = "assets"
 # Optional; an asset will only be processed if its path contains one of the paths in this list
 path_whitelist = [
     "avg/characters/", # story character sprites
-    # "avg/bg/", # story background images
+    "avg/bg/", # story background images
     # "spritepack/ui_roguelike_topic_item", # relic icons
     # "spritepack/ui_equip_big_img", # module arts
-    # "avg/items/", # story item arts
+    "avg/items/", # story item arts
     # "spritepack/ui_char_avatar", # op faces
-    # "avg/imgs/", # story images
+    "avg/imgs/", # story images
     # "spritepack/skill_icons", # op skill icon art
     # "spritepack/ui_item_icons", # misc item art ??
     # "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
