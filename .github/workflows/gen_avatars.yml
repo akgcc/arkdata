@@ -14,11 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
+
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Free up disk space
-        run: sudo bash ./free_disk_space.sh
 
       - name: Set up Python
         uses: actions/setup-python@v5
