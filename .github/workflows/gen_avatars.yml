@@ -40,16 +40,7 @@ jobs:
             
       - name: Install Dependencies
         run: |
-          pip install torch==1.12.1
-          pip install torchvision==0.13.1
-          pip install imagesize==1.4.1
-          pip install numpy==1.23.3
-          pip install openmim==0.3.2
-          python -m mim install mmcv-full==1.6.2
-          python -m mim install mmdet==2.25.2
-          pip install wheel
-          python -m mim install mmpose==0.28.1
-          pip install anime-face-detector==0.0.9
+          pip install -r requirements_avatars.txt
           pip freeze
           
       - name: Clone ArknightsGameData

@@ -1,0 +1,12 @@
+torch==1.12.1
+torchvision==0.13.1
+imagesize==1.4.1
+openmim==0.3.2
+mmcv-full==1.6.2
+mmdet==2.25.2
+mmpose==0.28.1
+anime-face-detector==0.0.9
+
+# Critical transitive dependencies pinned to prevent numpy 2.x
+numpy==1.23.3
+opencv-python-headless==4.11.0.86
