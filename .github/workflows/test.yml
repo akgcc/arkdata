@@ -12,33 +12,74 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Create Minimal Requirements File
+      - name: Write requirements file
         run: |
-          echo "torch==1.12.1" > req.txt
-          echo "torchvision==0.13.1" >> req.txt
-          echo "imagesize==1.4.1" >> req.txt
-          echo "openmim==0.3.2" >> req.txt
-          echo "mmcv-full==1.6.2" >> req.txt
-          echo "mmdet==2.25.2" >> req.txt
-          echo "mmpose==0.28.1" >> req.txt
-          echo "anime-face-detector==0.0.9" >> req.txt
-          echo "numpy==1.23.3" >> req.txt
-          echo "opencv-python-headless==4.11.0.86" >> req.txt
-          echo "typing_extensions==4.14.0" >> req.txt
-          echo "scipy==1.13.1" >> req.txt
-          echo "pycocotools==2.0.10" >> req.txt
-          echo "Pillow==11.2.1" >> req.txt
-          echo "addict==2.4.0" >> req.txt
-          echo "yapf==0.43.0" >> req.txt
-          echo "tomli==2.2.1" >> req.txt
-          echo "platformdirs==4.3.8" >> req.txt
-          echo "packaging==25.0" >> req.txt
+          cat <<EOF > requirements_avatars.txt
+          addict==2.4.0
+          anime-face-detector==0.0.9
+          certifi==2025.6.15
+          charset-normalizer==3.4.2
+          chumpy==0.70
+          click==8.1.8
+          colorama==0.4.6
+          contourpy==1.3.0
+          cycler==0.12.1
+          Cython==3.1.2
+          fonttools==4.58.4
+          idna==3.10
+          imagesize==1.4.1
+          importlib_metadata==8.7.0
+          importlib_resources==6.5.2
+          json-tricks==3.17.3
+          kiwisolver==1.4.7
+          Markdown==3.8.2
+          markdown-it-py==3.0.0
+          matplotlib==3.9.4
+          mdurl==0.1.2
+          mmcv-full==1.6.2
+          mmdet==2.25.2
+          mmpose==0.28.1
+          model-index==0.1.11
+          munkres==1.1.4
+          numpy==1.23.3
+          opencv-python==4.11.0.86
+          opencv-python-headless==4.11.0.86
+          openmim==0.3.2
+          ordered-set==4.1.0
+          packaging==25.0
+          pandas==2.3.0
+          pillow==11.2.1
+          platformdirs==4.3.8
+          pycocotools==2.0.10
+          Pygments==2.19.2
+          pyparsing==3.2.3
+          python-dateutil==2.9.0.post0
+          pytz==2025.2
+          PyYAML==6.0.2
+          requests==2.32.4
+          rich==14.0.0
+          scipy==1.13.1
+          six==1.17.0
+          tabulate==0.9.0
+          terminaltables==3.1.10
+          tomli==2.2.1
+          torch==1.12.1
+          torchvision==0.13.1
+          typing_extensions==4.14.0
+          tzdata==2025.2
+          urllib3==2.5.0
+          xtcocotools==1.14.3
+          yapf==0.43.0
+          zipp==3.23.0
+          EOF
 
-      - name: Install Dependencies
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libgl1
+
+      - name: Install dependencies
         run: |
           pip install --upgrade pip setuptools wheel
-          pip install --no-deps --no-build-isolation -r req.txt
+          pip install --no-deps --no-build-isolation -r requirements_avatars.txt
 
-      - name: Verify Import
-        run: |
-          python -c "import numpy, imagesize, cv2, anime_face_detector"
+      - name: Verify import
+        run: python -c "import numpy, imagesize, cv2, anime_face_detector"
