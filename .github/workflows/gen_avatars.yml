@@ -38,6 +38,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
             
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libgl1
+
       - name: Install dependencies with constraints
         run: |
           pip install torch==1.12.1 torchvision==0.13.1 imagesize==1.4.1 openmim==0.3.2 wheel --constraint requirements_avatars.txt
