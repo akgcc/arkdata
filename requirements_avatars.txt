@@ -1,25 +1,4 @@
-# core libs
-#torch==1.12.1
-#torchvision==0.13.1
-#imagesize==1.4.1
-#openmim==0.3.2
-#mmcv-full==1.6.2
-#mmdet==2.25.2
-#mmpose==0.28.1
-#anime-face-detector==0.0.9
-
-# pinned critical deps
-#numpy==1.23.3
-#opencv-python-headless==4.11.0.86
-#Pillow==11.2.1
-#scipy==1.13.1
-#pycocotools==2.0.10
-#typing_extensions==4.14.0
-#addict==2.4.0
-#yapf==0.43.0
-#tomli==2.2.1
-
-# i give up
+# pip freeze from last working run of the avatar images action
 addict==2.4.0
 anime-face-detector==0.0.9
 certifi==2025.6.15
