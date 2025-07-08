@@ -37,6 +37,9 @@ jobs:
           key: ${{ runner.os }}-pip-manual-v2
           restore-keys: |
             ${{ runner.os }}-pip-
+            
+      - name: Install libGL
+        run: sudo apt-get update && sudo apt-get install -y libgl1
 
       - name: Create constraints file
         run: echo "numpy<2" > constraints.txt
