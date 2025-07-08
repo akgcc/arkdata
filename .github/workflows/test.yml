@@ -30,6 +30,7 @@ jobs:
           echo "Pillow==11.2.1" >> req.txt
           echo "addict==2.4.0" >> req.txt
           echo "yapf==0.43.0" >> req.txt
+          echo "tomli==2.2.1" >> req.txt
 
       - name: Install Dependencies
         run: |
