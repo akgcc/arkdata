@@ -28,6 +28,7 @@ jobs:
           echo "scipy==1.13.1" >> req.txt
           echo "pycocotools==2.0.10" >> req.txt
           echo "Pillow==11.2.1" >> req.txt
+          echo "addict==2.4.0" >> req.txt
 
       - name: Install Dependencies
         run: |
