@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install --upgrade pip setuptools wheel
-          pip install --no-build-isolation -r requirements_avatars.txt
+          pip install --no-deps -r requirements_avatars.txt
           pip freeze
           
       - name: Clone ArknightsGameData

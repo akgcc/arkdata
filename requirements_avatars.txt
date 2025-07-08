@@ -1,3 +1,4 @@
+# core libs
 torch==1.12.1
 torchvision==0.13.1
 imagesize==1.4.1
@@ -7,6 +8,9 @@ mmdet==2.25.2
 mmpose==0.28.1
 anime-face-detector==0.0.9
 
-# Critical transitive dependencies pinned to prevent numpy 2.x
+# pinned critical deps
 numpy==1.23.3
 opencv-python-headless==4.11.0.86
+Pillow==11.2.1
+scipy==1.13.1
+pycocotools==2.0.10
