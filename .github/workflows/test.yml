@@ -32,6 +32,7 @@ jobs:
           echo "yapf==0.43.0" >> req.txt
           echo "tomli==2.2.1" >> req.txt
           echo "platformdirs==4.3.8" >> req.txt
+          echo "packaging==25.0" >> req.txt
 
       - name: Install Dependencies
         run: |
