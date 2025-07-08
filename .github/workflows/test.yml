@@ -1,35 +1,39 @@
-name: Test Dependency Install Only
+name: Test Dependency Installation
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-install:
+  test-deps:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Python 3.9
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: '3.9'
 
-      - name: Create requirements file
+      - name: Create Minimal Requirements File
         run: |
-          echo "torch==1.12.1" >> requirements_avatars.txt
-          echo "torchvision==0.13.1" >> requirements_avatars.txt
-          echo "imagesize==1.4.1" >> requirements_avatars.txt
-          echo "openmim==0.3.2" >> requirements_avatars.txt
-          echo "mmcv-full==1.6.2" >> requirements_avatars.txt
-          echo "mmdet==2.25.2" >> requirements_avatars.txt
-          echo "mmpose==0.28.1" >> requirements_avatars.txt
-          echo "anime-face-detector==0.0.9" >> requirements_avatars.txt
-          echo "numpy==1.23.3" >> requirements_avatars.txt
-          echo "opencv-python-headless==4.11.0.86" >> requirements_avatars.txt
+          echo "torch==1.12.1" > req.txt
+          echo "torchvision==0.13.1" >> req.txt
+          echo "imagesize==1.4.1" >> req.txt
+          echo "openmim==0.3.2" >> req.txt
+          echo "mmcv-full==1.6.2" >> req.txt
+          echo "mmdet==2.25.2" >> req.txt
+          echo "mmpose==0.28.1" >> req.txt
+          echo "anime-face-detector==0.0.9" >> req.txt
+          echo "numpy==1.23.3" >> req.txt
+          echo "opencv-python-headless==4.11.0.86" >> req.txt
+          echo "typing_extensions==4.14.0" >> req.txt
+          echo "scipy==1.13.1" >> req.txt
+          echo "pycocotools==2.0.10" >> req.txt
+          echo "Pillow==11.2.1" >> req.txt
 
-      - name: Upgrade pip, setuptools, wheel
-        run: pip install --upgrade pip setuptools wheel
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip setuptools wheel
+          pip install --no-deps --no-build-isolation -r req.txt
 
-      - name: Install dependencies without build isolation
-        run: pip install --no-build-isolation -r requirements_avatars.txt
-
-      - name: Show installed packages
-        run: pip freeze
+      - name: Verify Import
+        run: |
+          python -c "import numpy, imagesize, cv2, anime_face_detector"
