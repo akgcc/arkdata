@@ -38,10 +38,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
             
-      - name: Install Dependencies
+      - name: Install dependencies with constraints
         run: |
-          pip install --upgrade pip setuptools wheel
-          pip install --no-deps -r requirements_avatars.txt
+          pip install torch==1.12.1 torchvision==0.13.1 imagesize==1.4.1 openmim==0.3.2 wheel --constraint requirements_avatars.txt
+          python -m mim install mmcv-full==1.6.2
+          python -m mim install mmdet==2.25.2
+          python -m mim install mmpose==0.28.1
+          pip install anime-face-detector==0.0.9 --constraint requirements_avatars.txt
           pip freeze
           
       - name: Clone ArknightsGameData
