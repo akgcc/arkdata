@@ -11,21 +11,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
-          
-      - name: Install Dependencies
+              
+      - name: Create constraints file
+        run: echo "numpy==1.23.3" > constraints.txt
+
+      - name: Install dependencies with constraints
         run: |
-          pip install torch==1.12.1
-          pip install torchvision==0.13.1
-          pip install imagesize==1.4.1
-          pip install numpy==1.23.3
-          pip install openmim==0.3.2
+          pip install torch==1.12.1 torchvision==0.13.1 imagesize==1.4.1 openmim==0.3.2 wheel
           python -m mim install mmcv-full==1.6.2
           python -m mim install mmdet==2.25.2
-          pip install wheel
           python -m mim install mmpose==0.28.1
-          pip install anime-face-detector==0.0.9
-          pip freeze
-          
+          pip install anime-face-detector==0.0.9 --constraint constraints.txt
+          pip freeze          
 
       - name: Verify import
         run: python -c "import numpy, imagesize, cv2, anime_face_detector"
