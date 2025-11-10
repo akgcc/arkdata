@@ -37,4 +37,6 @@ path_whitelist = [
     "spritepack/ui_equip_type_hub", # module icons (no text)
     "spritepack/ui_uniequip_color_shining_hub", # module highlight colors
     "arts/potential_hub", # potentials
+    "storyentrypic", # intelligence archive story record pics
+    "trialtitle", # title bar for archive stories
 ]
