@@ -1,10 +1,10 @@
 {
-  "CN": {
-    "resource": "",
-    "client": ""
-  },
   "US": {
     "resource": "",
     "client": ""
+  },
+  "CN": {
+    "resource": "25-11-21-15-21-44_ee1197",
+    "client": "2.6.71"
   }
 }
