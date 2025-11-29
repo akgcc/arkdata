@@ -39,4 +39,5 @@ path_whitelist = [
     "arts/potential_hub", # potentials
     "storyentrypic", # intelligence archive story record pics
     "trialtitle", # title bar for archive stories
+    "char_portrait_", # images used in squad select
 ]
