@@ -55,7 +55,7 @@ jobs:
           
       - name: Clone ArknightsGameData
         run: |
-          git clone https://github.com/Kengxxiao/ArknightsGameData.git ./ArknightsGameData
+          git clone https://github.com/ArknightsAssets/ArknightsGamedata.git ./ArknightsGameData
           
       - name: Run Python Script
         run: python crop_avatars.py

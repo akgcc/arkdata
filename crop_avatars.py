@@ -21,7 +21,7 @@ outputCoords = Path('./cropper_data/avatar_coords.json')
 failedCoords = Path('./cropper_data/failed_coords.json')
 manCoords = Path('./cropper_data/manual_coords.json')
 outputDir = Path('./thumbs')
-storyDir = Path('./ArknightsGameData/zh_CN/gamedata/story')
+storyDir = Path('./ArknightsGameData/cn/gamedata/story')
 avgDir = Path('./assets/avg/characters')
 # aceshipDir = Path(r'.\characters_aceship')
 
