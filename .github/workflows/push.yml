@@ -112,7 +112,7 @@ jobs:
           # Create the lock file if the task failed
           git config --global user.name "Kawabot"
           git config --global user.email "actions@users.noreply.github.com"
-          git pull --all
+          git pull --all https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           echo "Task failed" > .github/LOCK_FAIL
           git add .github/LOCK_FAIL
-          git diff-index --quiet HEAD || git commit -m "Update failed, create lock file" && git push
+          git diff-index --quiet HEAD || git commit -m "Update failed, create lock file" && git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
