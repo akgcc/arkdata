@@ -3,11 +3,14 @@ name: Update assets
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "*/15 * * * *"
 
 jobs:
   check:
     runs-on: ubuntu-22.04
+    concurrency:
+      group: push
+      cancel-in-progress: false
     outputs:
       status: ${{ steps.early.outputs.status }}
     steps:

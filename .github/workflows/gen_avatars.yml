@@ -12,6 +12,9 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    concurrency:
+      group: push
+      cancel-in-progress: false
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
 
