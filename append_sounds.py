@@ -2,10 +2,12 @@
 from pathlib import Path
 import json,time,requests,re
 import toml
+DATA = 'https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/master/cn/gamedata/story/story_variables.json'
+# DATA = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/story/story_variables.json'
 dirpath = r'.\assets\torappu\dynamicassets\audio'
 varsFile = Path('story_variables.json')
 if not varsFile.exists() or time.time() - varsFile.stat().st_mtime > 60*60*24:
-    with requests.get('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/story/story_variables.json') as r:
+    with requests.get(DATA) as r:
         if r.status_code == 200:
             with varsFile.open('wb') as f:
                 f.write(r.content)
@@ -16,6 +18,9 @@ for v in vars.values():
     try:
         if (v.lower().startswith('sound_beta_2')):
             fpath = v.lower()
+            if fpath.endswith('_loop'):
+                # the .ab filenames do not include "_loop"
+                fpath = fpath[:-5]
             # MH sound file paths are wrong (?) change CustomSE to AVG
             fpath = re.sub(r'/customse/act24side/', '/avg/act24side/', fpath)
             usedFiles.add(fpath)
