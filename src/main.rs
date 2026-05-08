@@ -8,7 +8,7 @@ use arkdata::{
 use reqwest::Client;
 use std::fs::create_dir_all;
 
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() {
     let version = Version::load(&CONFIG.versions_path);
     let mut name_to_hash_mapping = NameHashMapping::load(&CONFIG.hashes_path);
