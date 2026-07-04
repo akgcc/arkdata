@@ -183,10 +183,10 @@ pub async fn fetch_all(hashes: &NameHashMapping, asset_info: &UpdateInfo, client
             .iter()
             .filter(|entry| {
                 is_in_whitelist(&entry.name)
-                    && hashes
-                        .inner
-                        .get(&entry.name)
-                        .map_or(true, |hash| hash != &entry.md5)
+                    && {
+                        let hash = hashes.inner.get(&entry.name);
+                        hash.map_or(true, |h| h != &entry.md5)
+                    }
             })
             .map(|entry| download_asset(entry.name.clone(), client.clone()))
             .pipe(process_parallel)
