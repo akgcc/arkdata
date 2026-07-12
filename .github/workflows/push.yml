@@ -95,6 +95,19 @@ jobs:
 
       - name: Build app
         run: cargo build --release
+        
+      - name: Monitor RAM and Disk Space (Background)
+        run: |
+          while true; do
+            echo "--- RESOURCE CHECK ---"
+            echo "Time: $(date)"
+            echo "=== DISK USE ==="
+            df -h / | awk 'NR==2 {print "Available Space: " $4 " (Used: " $5 ")"}'
+            echo "=== RAM USE ==="
+            free -h | awk 'NR==2 {print "Available RAM: " $7 " (Used: " $3 ")"}'
+            echo "----------------------"
+            sleep 10
+          done &
 
       - name: Run app
         env:
