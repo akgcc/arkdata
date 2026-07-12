@@ -96,23 +96,31 @@ jobs:
       - name: Build app
         run: cargo build --release
         
-      - name: Monitor RAM and Disk Space (Background)
-        run: |
-          while true; do
-            echo "--- RESOURCE CHECK ---"
-            echo "Time: $(date)"
-            echo "=== DISK USE ==="
-            df -h / | awk 'NR==2 {print "Available Space: " $4 " (Used: " $5 ")"}'
-            echo "=== RAM USE ==="
-            free -h | awk 'NR==2 {print "Available RAM: " $7 " (Used: " $3 ")"}'
-            echo "----------------------"
-            sleep 10
-          done &
-
-      - name: Run app
+      - name: Run Application with Live Resource Monitor
         env:
-          PYTHONUNBUFFERED: 1  # Ensure Python output is flushed
-        run: ./target/release/arkdata
+          PYTHONUNBUFFERED: 1  # Restored environment variable
+        run: |
+          # 1. Start the monitor using a proper bash subshell loop
+          (
+            while true; do
+              echo "--- RESOURCE CHECK ---"
+              echo "Time: $(date)"
+              df -h / | awk 'NR==2 {print "Available Space: " $4 " (Used: " $5 ")"}'
+              free -h | awk 'NR==2 {print "Available RAM: " $7 " (Used: " $3 ")"}'
+              echo "----------------------"
+              sleep 5
+            done
+          ) &
+          
+          MONITOR_PID=$!
+      
+          echo "=== LAUNCHING RUST APPLICATION ==="
+          
+          # 2. Execute your actual release binary directly in the foreground
+          ./target/release/arkdata
+          
+          # 3. Clean up the monitor if the app exits normally
+          kill $MONITOR_PID
 
       - name: Commit updates
         run: |
