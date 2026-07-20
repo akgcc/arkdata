@@ -83,19 +83,36 @@ impl UpdateInfo {
     }
 }
 
-async fn process_parallel<I, F>(tasks: I)
+async fn process_parallel<I, F>(mut tasks: I)
 where
     I: Iterator<Item = F>,
-    F: Future<Output = Result<JoinHandle<()>>> + Send + 'static,
+    F: Future<Output = Result<JoinHandle<()>, anyhow::Error>> + Send + 'static,
 {
     let mut set = JoinSet::new();
 
-    for task in tasks {
-        set.spawn(task);
+    // Loop until both the iterator is empty AND all tasks are finished
+    while set.len() < 8 {
+        if let Some(task) = tasks.next() {
+            // Flatten: Await the outer future, then immediately await the inner handle
+            set.spawn(async move {
+                let inner_handle = task.await.unwrap();
+                inner_handle.await.unwrap();
+            });
+        } else {
+            break;
+        }
     }
 
+    // Keep pulling from the iterator as items finish
     while let Some(res) = set.join_next().await {
-        res.unwrap().unwrap().await.unwrap();
+        res.unwrap(); // Propagate panics if the wrapper panicked
+
+        if let Some(task) = tasks.next() {
+            set.spawn(async move {
+                let inner_handle = task.await.unwrap();
+                inner_handle.await.unwrap();
+            });
+        }
     }
 }
 
