@@ -110,6 +110,7 @@ jobs:
           for batch in /tmp/batch_*; do
             echo "Processing $batch"
             while IFS= read -r file; do
+              git check-ignore -q "$file" && continue
               git add -A -- "$file"
             done < "$batch"
             git commit -m "Update data batch $(basename "$batch")" || true
