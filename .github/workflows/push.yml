@@ -48,9 +48,10 @@ jobs:
           tool-cache: true
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 1
 
       - name: Convert Poetry lockfile
         run: |
@@ -96,47 +97,34 @@ jobs:
       - name: Build app
         run: cargo build --release
         
-      - name: Run Application with Live Resource Monitor
+      - name: Run app
         env:
           PYTHONUNBUFFERED: 1  # Restored environment variable
-        run: |
-          # 1. Start the monitor using a proper bash subshell loop
-          (
-            while true; do
-              echo "--- RESOURCE CHECK ---"
-              echo "Time: $(date)"
-              df -h / | awk 'NR==2 {print "Available Space: " $4 " (Used: " $5 ")"}'
-              free -h | awk 'NR==2 {print "Available RAM: " $7 " (Used: " $3 ")"}'
-              echo "----------------------"
-              sleep 5
-            done
-          ) &
-          
-          MONITOR_PID=$!
-      
-          echo "=== LAUNCHING RUST APPLICATION ==="
-          
-          # 2. Execute your actual release binary directly in the foreground
-          ./target/release/arkdata
-          
-          # 3. Clean up the monitor if the app exits normally
-          kill $MONITOR_PID
-
-      - name: Commit updates
+        run: ./target/release/arkdata
+      - name: Commit and push in batches
         run: |
           git config --global user.name "Kawabot"
           git config --global user.email "actions@users.noreply.github.com"
-          git add cache assets
-          git commit -m "Update data"
+          find cache assets -type f > /tmp/files.txt
+          split -l 1000 /tmp/files.txt /tmp/batch_
+          for batch in /tmp/batch_*; do
+            echo "Processing $batch"
+            while IFS= read -r file; do
+              git add -A -- "$file"
+            done < "$batch"
+            git commit -m "Update data batch $(basename "$batch")" || true
+            git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          done
+          git add -A cache assets
+          git commit -m "Remove deleted data" || true
           git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
-
       - name: Update lock file on failure
         if: failure()
         run: |
           # Create the lock file if the task failed
           git config --global user.name "Kawabot"
           git config --global user.email "actions@users.noreply.github.com"
-          git pull --all https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
+          git pull https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           echo "Task failed" > .github/LOCK_FAIL
           git add .github/LOCK_FAIL
           git diff-index --quiet HEAD || git commit -m "Update failed, create lock file" && git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
