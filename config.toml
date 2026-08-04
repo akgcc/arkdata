@@ -23,6 +23,7 @@ path_whitelist = [
     "avg/items/", # story item arts
     "spritepack/ui_char_avatar", # op faces
     "avg/imgs/", # story images
+	"avg/images/", # story images 2?
     "spritepack/skill_icons", # op skill icon art
     "spritepack/ui_item_icons", # misc item art ??
     "ui/rglktopic/rogue_1.ab", # IS2 art, including play cards
