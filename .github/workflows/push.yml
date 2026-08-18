@@ -101,24 +101,35 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1  # Restored environment variable
         run: ./target/release/arkdata
+        
       - name: Commit and push in batches
         run: |
           git config --global user.name "Kawabot"
           git config --global user.email "actions@users.noreply.github.com"
-          find cache assets -type f > /tmp/files.txt
-          split -l 1000 /tmp/files.txt /tmp/batch_
-          for batch in /tmp/batch_*; do
-            echo "Processing $batch"
-            while IFS= read -r file; do
-              git check-ignore -q "$file" && continue
-              git add -A -- "$file"
-            done < "$batch"
-            git commit -m "Update data batch $(basename "$batch")" || true
-            git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
-          done
+          
+          # 1. Stage all changes (adds, modifications, AND deletions) safely
           git add -A cache assets
-          git commit -m "Remove deleted data" || true
-          git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          
+          # 2. Get a list of truly staged files and split them into batches
+          git diff --cached --name-only > /tmp/staged_files.txt
+          split -l 1000 /tmp/staged_files.txt /tmp/batch_
+          
+          # 3. Unstage everything so we can commit them cleanly in chunks
+          git reset
+          
+          # 4. Loop through the batches, stage the exact files, and commit
+          for batch in /tmp/batch_*; do
+            echo "Processing $batch..."
+            
+            # Use xargs to stage 1000 files in a single split-second command
+            xargs git add -- < "$batch"
+            
+            # Commit only if there are actual changes staged in this batch
+            if ! git diff --cached --quiet; then
+              git commit -m "Update data batch $(basename "$batch")"
+              git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+            fi
+          done
       - name: Update lock file on failure
         if: failure()
         run: |
